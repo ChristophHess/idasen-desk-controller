@@ -12,14 +12,14 @@ function createWindow () {
   })
 
   // and load the index.html of the app.
-  const url = process.env.ELECTRON_START_URL || url.format({
-    pathname: path.join(__dirname, './dist/main/index.html'),
-    protocol: 'file:',
-    slashes: true
-  });
+  const filename = process.env.ELECTRON_START_URL || 'dist/index.html';
 
-  console.log(`starting app with url: ${url}`)
-  win.loadURL(url);
+  console.log(`starting app with: ${filename}`)
+  if (process.env.ELECTRON_START_URL) {
+    win.loadURL(filename);
+  } else {
+    win.loadFile(filename);
+  }
 
   win.webContents.on('select-bluetooth-device', (event, deviceList, callback) => {
     event.preventDefault()
@@ -36,7 +36,7 @@ function createWindow () {
   })
 
   // Open the DevTools.
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools()
 }
 
 app.commandLine.appendSwitch('enable-experimental-web-platform-features')

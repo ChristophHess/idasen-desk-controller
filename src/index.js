@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 import Desk from './components/Desk'
 
-import 'regenerator-runtime/runtime'
-import '../node_modules/material-design-icons/iconfont/material-icons.css'
+import '/node_modules/regenerator-runtime/runtime'
+import '/node_modules/material-design-icons/iconfont/material-icons.css'
 
 const REPO_URL = 'https://github.com/nconrad/idasen-web-controller'
 
